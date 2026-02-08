@@ -1,0 +1,14 @@
+services:
+  app:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - db_data:/app/data
+    environment:
+      - JWT_SECRET=change-this-secret-in-production
+      - DATABASE_URL=sqlite:///data/hausverwaltung.db
+    restart: unless-stopped
+
+volumes:
+  db_data:
